@@ -1,0 +1,46 @@
+{% extends 'photos/base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" >
+            <div class="welcome" style="border border-bg-info bg-opacity-10 border border-info border-start-0 rounded-end">
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+
+                    <p class="text">
+                        Hey!<br>
+                        My name's Jackie and welcome to my page where I share with internet my photography made by me and my old Canon.
+                        Right now last added photography are not the last taken ones because I have so many of them from last years
+                        and I was able to create this page just recently when I began improving my IT skills.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-9">
+            <div class="row">
+                <h5>Last added photography</h5>
+                {% for photo in photos %}
+                <div class="col-md-4">
+                    <div class="card my-2">
+                        <img class="image-thumbail" style="height: 200px;
+                            object-fit: 'cover'"
+                             src="{{photo.image.url}}" class="card-img-top"
+                              alt="">
+                        <div class="card-body">
+                            <small>Category: {{photo.category.name}}</small>
+                        </div>
+                            <a href="{% url 'photos_photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
